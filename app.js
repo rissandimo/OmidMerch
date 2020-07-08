@@ -26,24 +26,32 @@ function priceFilter(event){
         const productId = product.id;
         const productName = product.querySelector('.product-name').innerText;
         const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
+        const itemID =  product.getAttribute('data-itemID');
 
         //store details in object
         let productDetails = {
             productId,
             productName,
             productPrice,
+            itemID
         };
         
-        console.log(productDetails);
-        console.log(`product price: ${productPrice}`);
-        
+        // console.log(productDetails);        
 
         //push oject to array
         filteredProducts.push(productDetails);
     })
 
     //sort rugs based on filter
-    if(priceFilterName === 'expensive'){
+    if(priceFilterName === 'default'){
+        console.log('default');
+        
+        filteredProducts.sort(function(productA, productB){
+            return productA.itemID - productB.itemID;
+        })
+    }
+    else if(priceFilterName === 'expensive'){
+        console.log('expensive');
         filteredProducts.sort(function(productA, productB){
             return productB.productPrice - productA.productPrice;
         })
@@ -71,6 +79,7 @@ function renderProductToUI(product){
     const productElement = document.createElement('div');
     productElement.className = 'product';
     productElement.id = product.productId;
+    productElement.setAttribute('data-itemID', product.itemID);
 
     productElement.innerHTML = `
         <img src="products/${product.productId}.JPG" alt="">
