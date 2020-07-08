@@ -1,11 +1,18 @@
 //DOM ELEMENTS
+const productFilter = document.getElementById('filter');
 const searchProduct = document.getElementById('search-product');
 
 //EVENT LISTENERS
 searchProduct.addEventListener('input', searchFilter);
+productFilter.addEventListener('change', priceFilter);
 
 
 //EVENT HANDLERS
+
+function priceFilter(event){
+    console.log(event.target.value);
+    
+}
 function searchFilter(event){
     
     const searchQuery = event.target.value;
