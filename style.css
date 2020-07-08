@@ -1,5 +1,5 @@
 :root{
-    --background-color: #f8f8ff;
+    --background-color: #add5ff ;
     --product-color: #e6e6fa;
     --btn-background: #002dcc;
 }
@@ -33,18 +33,20 @@ body{
 .container{
     margin: 0 auto;
     max-width: 1280px;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
 }
 
 p{
     line-height: 1.6rem;
-}
-
+}                                                               
+                                                        /* Products */
 .product-listing{
+    background-color: #fff;
     display: grid;
     grid-gap: 1rem;
     grid-template-columns: repeat(4, 1fr);
     margin: 1rem 0;
+    padding: 1rem;
 }
 
 .product-listing .product{
@@ -52,11 +54,10 @@ p{
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    height: 450px;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
-    text-align: centr;
+    height:320px;
+    text-align: center;
 }
 
 .product .product-description{
@@ -69,20 +70,23 @@ p{
 }
 
 .product-listing img{
-    width: 300px;
+    width: 200px;
 }
-                                        /* Filter */
+                                                                      /* Filter */
 
 .search-filter{
+    background-color: #005bd6;
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
-    margin: 0 auto;
-    padding: 1rem;
+    margin: 0.5rem auto;
+    padding: 1.5rem;
+    width: 100%;
 }
 
 .search-filter select{
     font-size: 1rem;
-    pad: 0.2rem 1rem;
+    padding: 0.2rem 1rem;
 }
 
 .search-filter .name-filter{
@@ -96,5 +100,34 @@ p{
     font-size: 1rem;
     padding: 0.2rem 1rem;
     width: 17rem;
+}
+
+@media(max-width: 900px){
+    .product-listing{
+      grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media(max-width: 750px){
+    .product-listing{
+        grid-template-columns: repeat(2, 1fr);
+      }
+}
+
+@media(max-width: 650px){
+    .product-listing{
+        grid-template-columns: 1fr;
+      }
+
+      .search-filter{
+          align-items: center;
+        /* justify-content: space-between; */
+        flex-direction: column;
+    }
+
+    .search-filter select{
+        margin-top: 0.5rem;
+    }
+
 }
 
