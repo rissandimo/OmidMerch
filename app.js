@@ -1,6 +1,7 @@
 //DOM ELEMENTS
 const productFilter = document.getElementById('filter');
 const searchProduct = document.getElementById('search-product');
+const productListing = document.querySelector('.product-listing');
 
 //EVENT LISTENERS
 searchProduct.addEventListener('input', searchFilter);
@@ -10,7 +11,71 @@ productFilter.addEventListener('change', priceFilter);
 //EVENT HANDLERS
 
 function priceFilter(event){
-    console.log(event.target.value);
+
+    let filteredProducts = [];
+
+    //creat array to store filtered products
+    const priceFilterName = event.target.value;
+
+    //get a list of all products
+    const allProducts = document.querySelectorAll('.product');
+
+    //for each product - parse details and store in array
+    allProducts.forEach(product => {
+
+        //store details in object
+        let productDetails = {
+            productId: product.id,
+            productName: product.querySelector('.product-name').innerText,
+            productPrice: parseFloat(product.querySelector('.product-price').innerText),
+        }
+        
+        // console.log(productDetails);
+        // console.log(productDetails.productImage);
+
+        //push oject to array
+        filteredProducts.push(productDetails);
+    })
+
+    //sort rugs based on filter
+    if(priceFilterName === 'expensive'){
+        filteredProducts.sort(function(productA, productB){
+            return productB.price - productA.price;
+        })
+    }
+    else if(priceFilterName === 'cheap'){
+        filteredProducts.sort(function(productA, productB){
+            return productA.price - productB.price;
+        })
+    }
+
+    
+
+    //clear UI
+    productListing.innerHTML = '';
+
+    //render each element to UI
+    filteredProducts.forEach(renderProductToUI);
+    
+}
+
+function renderProductToUI(product){
+
+    // create product dom element
+    const productElement = document.createElement('div');
+    productElement.className = 'product';
+    productElement.id = product.productId;
+
+    productElement.innerHTML = `
+        <img src="products/${product.productId}.JPG" alt="">
+        <div class="product-description">
+            <p class="product-name">${product.productName}</p>
+            <p class="product-price">$${product.productPrice}</p>
+        </div>
+        <a href="#" class="btn btn-primary btn-block">Buy</a>
+    `;
+
+    productListing.appendChild(productElement);
     
 }
 function searchFilter(event){
