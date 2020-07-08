@@ -76,7 +76,7 @@ function renderProductToUI(product){
         <img src="products/${product.productId}.JPG" alt="">
         <div class="product-description">
             <p class="product-name">${product.productName}</p>
-            <p class="product-price">${product.productPrice}</p>
+            <p class="product-price">$${product.productPrice}</p>
         </div>
         <a href="#" class="btn btn-primary btn-block">Buy</a>
     `;
