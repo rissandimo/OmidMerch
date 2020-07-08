@@ -23,15 +23,20 @@ function priceFilter(event){
     //for each product - parse details and store in array
     allProducts.forEach(product => {
 
+        const productId = product.id;
+        const productName = product.querySelector('.product-name').innerText;
+        const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
+
         //store details in object
         let productDetails = {
-            productId: product.id,
-            productName: product.querySelector('.product-name').innerText,
-            productPrice: parseFloat(product.querySelector('.product-price').innerText),
-        }
+            productId,
+            productName,
+            productPrice,
+        };
         
-        // console.log(productDetails);
-        // console.log(productDetails.productImage);
+        console.log(productDetails);
+        console.log(`product price: ${productPrice}`);
+        
 
         //push oject to array
         filteredProducts.push(productDetails);
@@ -40,7 +45,7 @@ function priceFilter(event){
     //sort rugs based on filter
     if(priceFilterName === 'expensive'){
         filteredProducts.sort(function(productA, productB){
-            return productB.price - productA.price;
+            return productB.productPrice - productA.productPrice;
         })
     }
     else if(priceFilterName === 'cheap'){
@@ -49,6 +54,7 @@ function priceFilter(event){
         })
     }
 
+    console.log(filteredProducts);
     
 
     //clear UI
@@ -70,7 +76,7 @@ function renderProductToUI(product){
         <img src="products/${product.productId}.JPG" alt="">
         <div class="product-description">
             <p class="product-name">${product.productName}</p>
-            <p class="product-price">$${product.productPrice}</p>
+            <p class="product-price">${product.productPrice}</p>
         </div>
         <a href="#" class="btn btn-primary btn-block">Buy</a>
     `;
