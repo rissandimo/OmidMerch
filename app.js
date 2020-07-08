@@ -50,7 +50,7 @@ function priceFilter(event){
     }
     else if(priceFilterName === 'cheap'){
         filteredProducts.sort(function(productA, productB){
-            return productA.price - productB.price;
+            return productA.productPrice - productB.productPrice;
         })
     }
 
