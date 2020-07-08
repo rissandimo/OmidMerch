@@ -18,13 +18,14 @@ function searchFilter(event){
 
         const productName = product.querySelector('.product-name').innerText;
 
-        console.log(productName);
+        //if there is a match -> display is normal; otherwise none
+        if(productName.toLowerCase().trim().indexOf(searchQuery) > -1){
+            product.style.display = 'flex';
+        }else{
+            product.style.display = 'none';
+        }
         
-
-
-
     })
 
-    //if there is a match -> display is normal; otherwise none
     
 }
