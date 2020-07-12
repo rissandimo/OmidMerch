@@ -2,10 +2,12 @@
 const productFilter = document.getElementById('filter');
 const searchProduct = document.getElementById('search-product');
 const productListing = document.querySelector('.product-listing');
+const subMenu = document.querySelector('.sub-menu');
 
 //EVENT LISTENERS
-searchProduct.addEventListener('input', searchFilter);
 productFilter.addEventListener('change', priceFilter);
+searchProduct.addEventListener('input', searchFilter);
+subMenu.addEventListener('click', showSpecificProducts);
 
 
 //EVENT HANDLERS
@@ -91,6 +93,8 @@ function renderProductToUI(product){
     productListing.appendChild(productElement);
     
 }
+
+// Search for item based on query
 function searchFilter(event){
     
     const searchQuery = event.target.value;
@@ -110,7 +114,34 @@ function searchFilter(event){
             product.style.display = 'none';
         }
         
-    })
+    });    
+}
 
+// List items based on link
+function linkFilter(productName){
+    console.log(productName);
     
+    //get a list of all products
+    const allProducts = document.querySelectorAll('.product');
+
+    // for each product show if 'productName' matches category name
+    allProducts.forEach(product => {
+        const categoryName = product.getAttribute('data-category');
+        console.log(`category: ${categoryName}`);
+
+        if(productName === categoryName){
+            product.style.display = 'flex';
+        }
+        else{
+            product.style.display = 'none';
+        }
+    });
+
+}
+
+function showSpecificProducts(event){
+    const targetClicked = event.target.getAttribute('data-link-category');
+    console.log(`link category: ${targetClicked}`);
+    
+    linkFilter(targetClicked);
 }
