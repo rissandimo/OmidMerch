@@ -2,17 +2,23 @@
 const productFilter = document.getElementById('filter');
 const searchProduct = document.getElementById('search-product');
 const productListing = document.querySelector('.product-listing');
+const subMenu = document.querySelector('.sub-menu');
 
 //EVENT LISTENERS
-searchProduct.addEventListener('input', searchFilter);
 productFilter.addEventListener('change', priceFilter);
+searchProduct.addEventListener('input', searchFilter);
+subMenu.addEventListener('click', showSpecificProducts);
+
+const state = {
+    currentCategory: null
+}
 
 
 //EVENT HANDLERS
-
 function priceFilter(event){
 
     let filteredProducts = [];
+    let categoryProducts = null;
 
     //creat array to store filtered products
     const priceFilterName = event.target.value;
@@ -20,25 +26,54 @@ function priceFilter(event){
     //get a list of all products
     const allProducts = document.querySelectorAll('.product');
 
-    //for each product - parse details and store in array
-    allProducts.forEach(product => {
-
-        const productName = product.querySelector('.product-name').innerText;
-        const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
-        const itemID =  product.getAttribute('data-itemID');
-
-        //store details in object
-        let productDetails = {
-            productName,
-            productPrice,
-            itemID
-        };
+    // check if category set
+    if(state.currentCategory === null){
+        console.log("show all categories");
         
-        // console.log(productDetails);        
+        //for each product - parse details and store in array
+        allProducts.forEach(product => {
+    
+            const productName = product.querySelector('.product-name').innerText;
+            const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
+            const itemID =  product.getAttribute('data-itemID');
+    
+            //store details in object
+            let productDetails = {
+                productName,
+                productPrice,
+                itemID
+            };
+            
+            // console.log(productDetails);        
+    
+            //push oject to array
+            filteredProducts.push(productDetails);
+        });
 
-        //push oject to array
-        filteredProducts.push(productDetails);
-    })
+    }else{
+        console.log("category chosen");
+        
+        constAllProductsArray = Array.from(allProducts);
+        categoryProducts = constAllProductsArray.filter(product => product.getAttribute('data-category') === state.currentCategory);
+
+        categoryProducts.forEach(product => {
+    
+            const productName = product.querySelector('.product-name').innerText;
+            const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
+            const itemID =  product.getAttribute('data-itemID');
+    
+            //store details in object
+            let productDetails = {
+                productName,
+                productPrice,
+                itemID
+            };        
+    
+            //push oject to array
+            filteredProducts.push(productDetails);
+        });
+    }
+
 
     //sort rugs based on filter
     if(priceFilterName === 'default'){
@@ -58,10 +93,7 @@ function priceFilter(event){
         filteredProducts.sort(function(productA, productB){
             return productA.productPrice - productB.productPrice;
         })
-    }
-
-    console.log(filteredProducts);
-    
+    }    
 
     //clear UI
     productListing.innerHTML = '';
@@ -91,6 +123,8 @@ function renderProductToUI(product){
     productListing.appendChild(productElement);
     
 }
+
+// Search for item based on query
 function searchFilter(event){
     
     const searchQuery = event.target.value;
@@ -110,7 +144,34 @@ function searchFilter(event){
             product.style.display = 'none';
         }
         
-    })
+    });    
+}
 
+// List items based on link
+function linkFilter(productName){
+    console.log(productName);
     
+    //get a list of all products
+    const allProducts = document.querySelectorAll('.product');
+
+    // for each product show if 'productName' matches category name
+    allProducts.forEach(product => {
+        const categoryName = product.getAttribute('data-category');
+
+        if(productName === categoryName){
+            product.style.display = 'flex';
+        }
+        else{
+            product.style.display = 'none';
+        }
+    });
+
+}
+
+function showSpecificProducts(event){
+    const targetClicked = event.target.getAttribute('data-link-category');
+    state.currentCategory = targetClicked;
+    
+    
+    linkFilter(targetClicked);
 }
