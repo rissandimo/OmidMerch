@@ -14,6 +14,22 @@ html{
     font-size: 62.5%;
 }
 
+#about{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50vh;
+}
+
+#about .about-bio{
+    margin-top: 2rem;
+}
+
+#about img{
+    width: 400px;
+}
+
 body{
     background-color: var(--background-color);
     color: #000;
@@ -46,7 +62,7 @@ form{
 }
 
 p{
-    line-height: rem;
+    line-height: 2rem;
 }  
                                                     /* Header */
 
@@ -67,10 +83,17 @@ p{
 
 /* Group item */
 .navigation > ul > li{
+    color: #fff;
     display: inline-block;
     list-style-type: none;
     padding: 0.5rem 2.5rem;
     position: relative;
+}
+
+.navigation > ul > li a,
+.navigation > ul > li a:visited{
+    color: #fff;
+    text-decoration: none;
 }
 
 ul.sub-menu{
@@ -80,7 +103,7 @@ ul.sub-menu{
     opacity: 0;
     padding-top: 0.5rem;
     position: absolute;
-    width: 11rem;
+    width: 13rem;
 }
 
 
