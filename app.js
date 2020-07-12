@@ -13,11 +13,13 @@ const state = {
     currentCategory: null
 }
 
+let filteredProducts = [];
+
+
 
 //EVENT HANDLERS
 function priceFilter(event){
 
-    let filteredProducts = [];
     let categoryProducts = null;
 
     //creat array to store filtered products
@@ -28,52 +30,16 @@ function priceFilter(event){
 
     // check if category set
     if(state.currentCategory === null){
-        console.log("show all categories");
         
-        //for each product - parse details and store in array
-        allProducts.forEach(product => {
-    
-            const productName = product.querySelector('.product-name').innerText;
-            const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
-            const itemID =  product.getAttribute('data-itemID');
-    
-            //store details in object
-            let productDetails = {
-                productName,
-                productPrice,
-                itemID
-            };
-            
-            // console.log(productDetails);        
-    
-            //push oject to array
-            filteredProducts.push(productDetails);
-        });
+        parseDetailsAndStoreInArray(allProducts, filteredProducts);
 
     }else{
-        console.log("category chosen");
         
         constAllProductsArray = Array.from(allProducts);
         categoryProducts = constAllProductsArray.filter(product => product.getAttribute('data-category') === state.currentCategory);
 
-        categoryProducts.forEach(product => {
-    
-            const productName = product.querySelector('.product-name').innerText;
-            const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
-            const itemID =  product.getAttribute('data-itemID');
-    
-            //store details in object
-            let productDetails = {
-                productName,
-                productPrice,
-                itemID
-            };        
-    
-            //push oject to array
-            filteredProducts.push(productDetails);
-        });
+        parseDetailsAndStoreInArray(categoryProducts, filteredProducts);
     }
-
 
     //sort rugs based on filter
     if(priceFilterName === 'default'){
@@ -101,6 +67,25 @@ function priceFilter(event){
     //render each element to UI
     filteredProducts.forEach(renderProductToUI);
     
+}
+
+function parseDetailsAndStoreInArray(products, array){
+    products.forEach(product => {
+
+        const productName = product.querySelector('.product-name').innerText;
+        const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
+        const itemID =  product.getAttribute('data-itemID');
+
+        //store details in object
+        let productDetails = {
+            productName,
+            productPrice,
+            itemID
+        };        
+
+        //push oject to array
+        array.push(productDetails);
+    });
 }
 
 function renderProductToUI(product){
