@@ -23,14 +23,12 @@ function priceFilter(event){
     //for each product - parse details and store in array
     allProducts.forEach(product => {
 
-        const productId = product.id;
         const productName = product.querySelector('.product-name').innerText;
         const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
         const itemID =  product.getAttribute('data-itemID');
 
         //store details in object
         let productDetails = {
-            productId,
             productName,
             productPrice,
             itemID
@@ -78,11 +76,11 @@ function renderProductToUI(product){
     // create product dom element
     const productElement = document.createElement('div');
     productElement.className = 'product';
-    productElement.id = product.productId;
+    productElement.id = product.itemID;
     productElement.setAttribute('data-itemID', product.itemID);
 
     productElement.innerHTML = `
-        <img src="products/${product.productId}.JPG" alt="">
+        <img src="products/${product.itemID}.JPG" alt="">
         <div class="product-description">
             <p class="product-name">${product.productName}</p>
             <p class="product-price">$${product.productPrice}</p>
