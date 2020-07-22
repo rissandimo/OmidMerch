@@ -1,23 +1,27 @@
 //DOM ELEMENTS
-const productFilter = document.getElementById('filter');
-const searchProduct = document.getElementById('search-product');
+const priceFilter = document.getElementById('price-filter');
+const searchBtn = document.getElementById('search-btn');
+const searchProductText = document.getElementById('search-product');
 const productListing = document.querySelector('.product-listing');
 const subMenu = document.querySelector('.sub-menu');
 
 //EVENT LISTENERS
-productFilter.addEventListener('change', priceFilter);
-searchProduct.addEventListener('input', searchFilter);
+priceFilter.addEventListener('change', filterByPrice);
+// searchProductText.addEventListener('input', searchFilter);
+searchBtn.addEventListener('click', searchFilter);
 subMenu.addEventListener('click', showSpecificProducts);
 
 const state = {
-    currentCategory: null
+    currentCategory: null,
+    filteredProducts: [],
 }
 
 
 //EVENT HANDLERS
-function priceFilter(event){
+function filterByPrice(event){
+    console.log("price filter");
+    state.filteredProducts = [];
 
-    let filteredProducts = [];
     let categoryProducts = null;
 
     //creat array to store filtered products
@@ -28,69 +32,33 @@ function priceFilter(event){
 
     // check if category set
     if(state.currentCategory === null){
-        console.log("show all categories");
         
-        //for each product - parse details and store in array
-        allProducts.forEach(product => {
-    
-            const productName = product.querySelector('.product-name').innerText;
-            const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
-            const itemID =  product.getAttribute('data-itemID');
-    
-            //store details in object
-            let productDetails = {
-                productName,
-                productPrice,
-                itemID
-            };
-            
-            // console.log(productDetails);        
-    
-            //push oject to array
-            filteredProducts.push(productDetails);
-        });
+        parseDetailsAndStoreInArray(allProducts, state.filteredProducts);
 
     }else{
-        console.log("category chosen");
         
         constAllProductsArray = Array.from(allProducts);
         categoryProducts = constAllProductsArray.filter(product => product.getAttribute('data-category') === state.currentCategory);
 
-        categoryProducts.forEach(product => {
-    
-            const productName = product.querySelector('.product-name').innerText;
-            const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
-            const itemID =  product.getAttribute('data-itemID');
-    
-            //store details in object
-            let productDetails = {
-                productName,
-                productPrice,
-                itemID
-            };        
-    
-            //push oject to array
-            filteredProducts.push(productDetails);
-        });
+        parseDetailsAndStoreInArray(categoryProducts, state.filteredProducts);
     }
-
 
     //sort rugs based on filter
     if(priceFilterName === 'default'){
         console.log('default');
         
-        filteredProducts.sort(function(productA, productB){
+        state.filteredProducts.sort(function(productA, productB){
             return productA.itemID - productB.itemID;
         })
     }
     else if(priceFilterName === 'expensive'){
         console.log('expensive');
-        filteredProducts.sort(function(productA, productB){
+        state.filteredProducts.sort(function(productA, productB){
             return productB.productPrice - productA.productPrice;
         })
     }
     else if(priceFilterName === 'cheap'){
-        filteredProducts.sort(function(productA, productB){
+        state.filteredProducts.sort(function(productA, productB){
             return productA.productPrice - productB.productPrice;
         })
     }    
@@ -99,12 +67,31 @@ function priceFilter(event){
     productListing.innerHTML = '';
 
     //render each element to UI
-    filteredProducts.forEach(renderProductToUI);
+    state.filteredProducts.forEach(renderProductToUI);
     
 }
 
-function renderProductToUI(product){
+function parseDetailsAndStoreInArray(products, array){
+    products.forEach(product => {
 
+        const productName = product.querySelector('.product-name').innerText;
+        const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
+        const itemID =  product.getAttribute('data-itemID');
+
+        //store details in object
+        let productDetails = {
+            productName,
+            productPrice,
+            itemID
+        };        
+
+        //push oject to array
+        array.push(productDetails);
+    });
+}
+
+function renderProductToUI(product){
+    console.log("render product");
     // create product dom element
     const productElement = document.createElement('div');
     productElement.className = 'product';
@@ -126,25 +113,47 @@ function renderProductToUI(product){
 
 // Search for item based on query
 function searchFilter(event){
-    
-    const searchQuery = event.target.value;
 
-    //get a list of all products
+    event.preventDefault();
+
+    console.log("search filter");
+
+    const searchQuery = searchProductText.value;
+
+    console.log(searchQuery);
+
+    // clear input
+    searchProductText.value = '';
+
     const allProducts = document.querySelectorAll('.product');
 
-    //for each product - get name and description
     allProducts.forEach(product => {
 
         const productName = product.querySelector('.product-name').innerText;
+        if(productName.toLowerCase().trim().indexOf(searchQuery) >-1){
 
-        //if there is a match -> display is normal; otherwise none
-        if(productName.toLowerCase().trim().indexOf(searchQuery) > -1){
-            product.style.display = 'flex';
-        }else{
-            product.style.display = 'none';
+            console.log("match found");
+            const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
+            const itemID =  product.getAttribute('data-itemID');
+    
+            //store details in object
+            let productDetails = {
+                productName,
+                productPrice,
+                itemID
+            };        
+    
+            //push oject to array
+            state.filteredProducts.push(productDetails);
         }
-        
-    });    
+    });
+
+    // clear UI
+    productListing.innerHTML = '';
+
+    // render filtere items
+    state.filteredProducts.forEach(renderProductToUI);
+
 }
 
 // List items based on link
