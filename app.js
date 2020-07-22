@@ -8,10 +8,8 @@ const subMenu = document.querySelector('.sub-menu');
 
 //EVENT LISTENERS
 priceFilter.addEventListener('change', filterByPrice);
-// searchProductText.addEventListener('input', searchFilter);
 showAllProductsBtn.addEventListener('click', showAllProducts);
 searchBtn.addEventListener('click', searchFilter);
-subMenu.addEventListener('click', showSpecificProducts);
 
 const state = {
     allProducts: [],
@@ -21,6 +19,9 @@ const state = {
 
 // Functions
 function storeAllProducts(){
+
+    // clear all products
+    state.allProducts = [];
     
     const allProducts = document.querySelectorAll('.product');
 
@@ -45,7 +46,6 @@ function storeAllProducts(){
 
 //EVENT HANDLERS
 function filterByPrice(event){
-    console.log("price filter");
     state.filteredProducts = [];
 
     let categoryProducts = null;
@@ -163,11 +163,9 @@ function searchFilter(event){
 
     event.preventDefault();
 
-    console.log("search filter");
+    state.filteredProducts = [];
 
     const searchQuery = searchProductText.value;
-
-    console.log(searchQuery);
 
     // clear input
     searchProductText.value = '';
@@ -200,6 +198,7 @@ function searchFilter(event){
 
     // show all products button
     showAllProductsBtn.style.display = 'inline-block';
+    document.querySelector('.name-filter').style.width = '55rem';
 
     // render filtere items
     state.filteredProducts.forEach(renderProductToUI);
@@ -207,16 +206,17 @@ function searchFilter(event){
 }
 
 function showAllProducts(){
-    state.allProducts.forEach(renderProductToUI);
-    showAllProductsBtn.style.display = 'none';
-}
 
-function showSpecificProducts(event){
-    const targetClicked = event.target.getAttribute('data-link-category');
-    state.currentCategory = targetClicked;
+    // clear UI
+    productListing.innerHTML = '';
     
-    linkFilter(targetClicked);
-}
+    // render all products
+    state.allProducts.forEach(renderProductToUI);
 
+    //hide "show all products" button
+    showAllProductsBtn.style.display = 'none';
+    document.querySelector('.name-filter').style.width = '40rem';
+
+}
 
 window.addEventListener('DOMContentLoaded', storeAllProducts);
