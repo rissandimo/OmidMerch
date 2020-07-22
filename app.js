@@ -17,7 +17,6 @@ const state = {
 }
 
 
-
 //EVENT HANDLERS
 function filterByPrice(event){
     console.log("price filter");

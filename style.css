@@ -74,23 +74,28 @@ p{
         width: 100%;
     }
     
-    .search-filter select{
-        font-size: 1.5rem;
-        padding: 0.2rem 1rem;
-    }
-    
     .search-filter .name-filter{
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 28rem;
+        width: 40rem;
     }
     
-    .name-filter input{
+    .search-filter .name-filter input{
+        font-size: 1.5rem;
+        padding: 0.4rem 1rem;
+        width: 30rem;
+    }
+    .search-filter #search-btn{
+        padding: 0.5rem 1rem;
+    }
+
+    .search-filter select{
         font-size: 1.5rem;
         padding: 0.2rem 1rem;
-        width: 26rem;
     }
+
+    
 
 
 
