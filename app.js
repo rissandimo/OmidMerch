@@ -3,23 +3,49 @@ const priceFilter = document.getElementById('price-filter');
 const searchBtn = document.getElementById('search-btn');
 const searchProductText = document.getElementById('search-product');
 const productListing = document.querySelector('.product-listing');
+const showAllProductsBtn = document.querySelector('#show-all-products');
 const subMenu = document.querySelector('.sub-menu');
 
 //EVENT LISTENERS
 priceFilter.addEventListener('change', filterByPrice);
-// searchProductText.addEventListener('input', searchFilter);
+showAllProductsBtn.addEventListener('click', showAllProducts);
 searchBtn.addEventListener('click', searchFilter);
-subMenu.addEventListener('click', showSpecificProducts);
 
 const state = {
+    allProducts: [],
     currentCategory: null,
     filteredProducts: [],
+}
+
+// Functions
+function storeAllProducts(){
+
+    // clear all products
+    state.allProducts = [];
+    
+    const allProducts = document.querySelectorAll('.product');
+
+    allProducts.forEach(product => {
+
+        const productName = product.querySelector('.product-name').innerText;
+        const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
+        const itemID =  product.getAttribute('data-itemID');
+
+         //store details in object
+         let productDetails = {
+            productName,
+            productPrice,
+            itemID
+        };        
+
+        //push oject to array
+        state.allProducts.push(productDetails);
+    });
 }
 
 
 //EVENT HANDLERS
 function filterByPrice(event){
-    console.log("price filter");
     state.filteredProducts = [];
 
     let categoryProducts = null;
@@ -71,6 +97,27 @@ function filterByPrice(event){
     
 }
 
+// List items based on link
+function linkFilter(productName){
+    console.log(productName);
+    
+    //get a list of all products
+    const allProducts = document.querySelectorAll('.product');
+
+    // for each product show if 'productName' matches category name
+    allProducts.forEach(product => {
+        const categoryName = product.getAttribute('data-category');
+
+        if(productName === categoryName){
+            product.style.display = 'flex';
+        }
+        else{
+            product.style.display = 'none';
+        }
+    });
+}
+
+
 function parseDetailsAndStoreInArray(products, array){
     products.forEach(product => {
 
@@ -116,11 +163,9 @@ function searchFilter(event){
 
     event.preventDefault();
 
-    console.log("search filter");
+    state.filteredProducts = [];
 
     const searchQuery = searchProductText.value;
-
-    console.log(searchQuery);
 
     // clear input
     searchProductText.value = '';
@@ -151,36 +196,27 @@ function searchFilter(event){
     // clear UI
     productListing.innerHTML = '';
 
+    // show all products button
+    showAllProductsBtn.style.display = 'inline-block';
+    document.querySelector('.name-filter').style.width = '55rem';
+
     // render filtere items
     state.filteredProducts.forEach(renderProductToUI);
 
 }
 
-// List items based on link
-function linkFilter(productName){
-    console.log(productName);
+function showAllProducts(){
+
+    // clear UI
+    productListing.innerHTML = '';
     
-    //get a list of all products
-    const allProducts = document.querySelectorAll('.product');
+    // render all products
+    state.allProducts.forEach(renderProductToUI);
 
-    // for each product show if 'productName' matches category name
-    allProducts.forEach(product => {
-        const categoryName = product.getAttribute('data-category');
-
-        if(productName === categoryName){
-            product.style.display = 'flex';
-        }
-        else{
-            product.style.display = 'none';
-        }
-    });
+    //hide "show all products" button
+    showAllProductsBtn.style.display = 'none';
+    document.querySelector('.name-filter').style.width = '40rem';
 
 }
 
-function showSpecificProducts(event){
-    const targetClicked = event.target.getAttribute('data-link-category');
-    state.currentCategory = targetClicked;
-    
-    
-    linkFilter(targetClicked);
-}
+window.addEventListener('DOMContentLoaded', storeAllProducts);
