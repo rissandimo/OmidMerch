@@ -1,12 +1,14 @@
 //DOM ELEMENTS
 const productFilter = document.getElementById('filter');
-const searchProduct = document.getElementById('search-product');
+const searchBtn = document.getElementById('search-btn');
+const searchProductText = document.getElementById('search-product');
 const productListing = document.querySelector('.product-listing');
 const subMenu = document.querySelector('.sub-menu');
 
 //EVENT LISTENERS
 productFilter.addEventListener('change', priceFilter);
-searchProduct.addEventListener('input', searchFilter);
+// searchProductText.addEventListener('input', searchFilter);
+searchBtn.addEventListener('click', searchFilter);
 subMenu.addEventListener('click', showSpecificProducts);
 
 const state = {
@@ -113,7 +115,11 @@ function renderProductToUI(product){
 // Search for item based on query
 function searchFilter(event){
     
-    const searchQuery = event.target.value;
+    event.preventDefault();
+    
+    const searchQuery = searchProductText.value;
+
+    console.log(searchQuery);
 
     //get a list of all products
     const allProducts = document.querySelectorAll('.product');
