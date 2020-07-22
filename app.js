@@ -1,4 +1,5 @@
 //DOM ELEMENTS
+const filterMessageContainer = document.getElementById('filter-message-container');
 const priceFilter = document.getElementById('price-filter');
 const searchBtn = document.getElementById('search-btn');
 const searchProductText = document.getElementById('search-product');
@@ -162,46 +163,64 @@ function renderProductToUI(product){
 function searchFilter(event){
 
     event.preventDefault();
-
-    state.filteredProducts = [];
-
     const searchQuery = searchProductText.value;
+    let matchesFound = 0;
 
-    // clear input
-    searchProductText.value = '';
-
-    const allProducts = document.querySelectorAll('.product');
-
-    allProducts.forEach(product => {
-
-        const productName = product.querySelector('.product-name').innerText;
-        if(productName.toLowerCase().trim().indexOf(searchQuery) >-1){
-
-            console.log("match found");
-            const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
-            const itemID =  product.getAttribute('data-itemID');
+    // check if query empty
+    if(searchQuery.trim() != ''){
+        
+        state.filteredProducts = [];
     
-            //store details in object
-            let productDetails = {
-                productName,
-                productPrice,
-                itemID
-            };        
+        // clear input
+        searchProductText.value = '';
+
+        const allProducts = document.querySelectorAll('.product');
+                
+        allProducts.forEach(product => {
+            
+            const productName = product.querySelector('.product-name').innerText;
+            if(productName.toLowerCase().trim().indexOf(searchQuery) >-1){
+                matchesFound++;
+
+                const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
+                const itemID =  product.getAttribute('data-itemID');
+        
+                //store details in object
+                let productDetails = {
+                    productName,
+                    productPrice,
+                    itemID
+                };        
+        
+                //push oject to array
+                state.filteredProducts.push(productDetails);
+            }
+            else{
+                filterMessageContainer.style.display = 'block';
+
+                setTimeout(() => {
+                filterMessageContainer.style.display = 'none';
+                }, 2000);
+            }
+        });
+
+        if(matchesFound){
+            // clear UI
+        productListing.innerHTML = '';
     
-            //push oject to array
-            state.filteredProducts.push(productDetails);
+        // show all products button
+        showAllProductsBtn.style.display = 'inline-block';
+        document.querySelector('.name-filter').style.width = '55rem';
+    
+        // render filtere items
+        state.filteredProducts.forEach(renderProductToUI);
         }
-    });
+        
+    }
+    else{
+        searchProductText.value = '';
+    }
 
-    // clear UI
-    productListing.innerHTML = '';
-
-    // show all products button
-    showAllProductsBtn.style.display = 'inline-block';
-    document.querySelector('.name-filter').style.width = '55rem';
-
-    // render filtere items
-    state.filteredProducts.forEach(renderProductToUI);
 
 }
 

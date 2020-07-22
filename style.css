@@ -64,6 +64,15 @@ p{
 
                                                                       /* Filter */
 
+    #filter-message-container{
+        display: none;
+        background-color: red;
+        margin: 1rem auto;
+        padding: 2rem;
+        text-align: center;
+        width: 1250px;
+    }
+
     .search-filter{
         background-color: #005bd6;
         border-radius: 1rem;
