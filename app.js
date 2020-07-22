@@ -1,4 +1,5 @@
 //DOM ELEMENTS
+const alertMessage = document.querySelector('.alert-message');
 const filterMessageContainer = document.getElementById('filter-message-container');
 const priceFilter = document.getElementById('price-filter');
 const searchBtn = document.getElementById('search-btn');
@@ -16,6 +17,17 @@ const state = {
     allProducts: [],
     currentCategory: null,
     filteredProducts: [],
+}
+
+function displayAlertMessage(message){
+    
+    alertMessage.innerHTML = message;
+
+    filterMessageContainer.style.display = 'block';
+        
+    setTimeout(() => {
+    filterMessageContainer.style.display = 'none';
+    }, 3000);
 }
 
 // Functions
@@ -166,20 +178,25 @@ function searchFilter(event){
     const searchQuery = searchProductText.value;
     let matchesFound = 0;
 
+    searchProductText.value = '';
+
     // check if query empty
     if(searchQuery.trim() != ''){
         
         state.filteredProducts = [];
     
         // clear input
-        searchProductText.value = '';
 
         const allProducts = document.querySelectorAll('.product');
                 
-        allProducts.forEach(product => {
+        allProducts.forEach(product => 
+            {
             
             const productName = product.querySelector('.product-name').innerText;
-            if(productName.toLowerCase().trim().indexOf(searchQuery) >-1){
+
+            // if matches found - store them in array
+            if(productName.toLowerCase().trim().indexOf(searchQuery) >-1)
+            {
                 matchesFound++;
 
                 const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
@@ -195,15 +212,9 @@ function searchFilter(event){
                 //push oject to array
                 state.filteredProducts.push(productDetails);
             }
-            else{
-                filterMessageContainer.style.display = 'block';
-
-                setTimeout(() => {
-                filterMessageContainer.style.display = 'none';
-                }, 2000);
-            }
         });
 
+        // If matches found - clear UI and render filtered items
         if(matchesFound){
             // clear UI
         productListing.innerHTML = '';
@@ -215,13 +226,17 @@ function searchFilter(event){
         // render filtere items
         state.filteredProducts.forEach(renderProductToUI);
         }
+
+        // No matches found - 
+        else{
+            displayAlertMessage("Sorry, no products found under that query");
+        }
         
     }
+    // Empty query
     else{
-        searchProductText.value = '';
+            displayAlertMessage("You must enter a query");
     }
-
-
 }
 
 function showAllProducts(){
