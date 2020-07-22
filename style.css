@@ -1,5 +1,5 @@
 :root{
-    --background-color: #add5ff ;
+    --background-color: #5271FF ;
     --product-color: #e6e6fa;
     --btn-background: #002dcc;
 }
@@ -14,27 +14,18 @@ html{
     font-size: 62.5%;
 }
 
-#about{
-    align-items: center;
+.about-bio{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    height: 50vh;
-}
-
-#about .about-bio{
     margin-top: 2rem;
-}
 
-#about img{
-    width: 400px;
 }
 
 body{
     background-color: var(--background-color);
     color: #000;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 .btn{
@@ -61,11 +52,52 @@ form{
     margin: 1rem 0;
 }
 
+.logo img{
+    margin: 1.5rem auto;
+    display: block;
+    width: 400px;
+}
+
 p{
     line-height: 2rem;
 }  
-                                                    /* Header */
 
+                                                                      /* Filter */
+
+    .search-filter{
+        background-color: #005bd6;
+        border-radius: 1rem;
+        display: flex;
+        justify-content: space-between;
+        margin: 0.5rem auto;
+        padding: 1.5rem;
+        width: 100%;
+    }
+    
+    .search-filter select{
+        font-size: 1.5rem;
+        padding: 0.2rem 1rem;
+    }
+    
+    .search-filter .name-filter{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 28rem;
+    }
+    
+    .name-filter input{
+        font-size: 1.5rem;
+        padding: 0.2rem 1rem;
+        width: 26rem;
+    }
+
+
+
+
+
+                                                    /* Header */
+                                                 
 #header h1{
     margin: 2rem 0;
     text-align: center;
@@ -165,36 +197,22 @@ ul.sub-menu li:hover{
     height: 175px;
     width: 175px;
 }
-                                                                      /* Filter */
+                                                                        /* Returns */
 
-.search-filter{
-    background-color: #005bd6;
-    border-radius: 1rem;
-    display: flex;
-    justify-content: space-between;
-    margin: 0.5rem auto;
-    padding: 1.5rem;
-    width: 100%;
-}
+#return-policy h1{
+    margin: 2rem 0 1rem 0;
+    text-align: center;
+}                                                                        
 
-.search-filter select{
-    font-size: 1.5rem;
-    padding: 0.2rem 1rem;
-}
 
-.search-filter .name-filter{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 28rem;
-}
 
-.name-filter input{
-    font-size: 1.5rem;
-    padding: 0.2rem 1rem;
-    width: 26rem;
-}
-                                                                              /*Firefox  */
+
+
+
+                                                                              /*Media Queries  */
+
+
+   /*Firefox  */
 @-moz-document url-prefix(){
 
     body{
@@ -235,7 +253,7 @@ ul.sub-menu li:hover{
 }
 
 
-                                                    /* Media queries */
+    /* Regular */
 @media(max-width: 900px){
     .product-listing{
       grid-template-columns: repeat(3, 1fr);

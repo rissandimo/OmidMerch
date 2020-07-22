@@ -1,26 +1,26 @@
 //DOM ELEMENTS
-const productFilter = document.getElementById('filter');
+const priceFilter = document.getElementById('price-filter');
 const searchBtn = document.getElementById('search-btn');
 const searchProductText = document.getElementById('search-product');
 const productListing = document.querySelector('.product-listing');
 const subMenu = document.querySelector('.sub-menu');
 
 //EVENT LISTENERS
-productFilter.addEventListener('change', priceFilter);
+priceFilter.addEventListener('change', filterByPrice);
 // searchProductText.addEventListener('input', searchFilter);
 searchBtn.addEventListener('click', searchFilter);
 subMenu.addEventListener('click', showSpecificProducts);
 
 const state = {
     currentCategory: null,
-    filteredProducts: []
+    filteredProducts: [],
 }
 
 
 
 //EVENT HANDLERS
-function priceFilter(event){
-
+function filterByPrice(event){
+    console.log("price filter");
     state.filteredProducts = [];
 
     let categoryProducts = null;
@@ -92,7 +92,7 @@ function parseDetailsAndStoreInArray(products, array){
 }
 
 function renderProductToUI(product){
-
+    console.log("render product");
     // create product dom element
     const productElement = document.createElement('div');
     productElement.className = 'product';
@@ -114,29 +114,47 @@ function renderProductToUI(product){
 
 // Search for item based on query
 function searchFilter(event){
-    
+
     event.preventDefault();
-    
+
+    console.log("search filter");
+
     const searchQuery = searchProductText.value;
 
     console.log(searchQuery);
 
-    //get a list of all products
+    // clear input
+    searchProductText.value = '';
+
     const allProducts = document.querySelectorAll('.product');
 
-    //for each product - get name and description
     allProducts.forEach(product => {
 
         const productName = product.querySelector('.product-name').innerText;
+        if(productName.toLowerCase().trim().indexOf(searchQuery) >-1){
 
-        //if there is a match -> display is normal; otherwise none
-        if(productName.toLowerCase().trim().indexOf(searchQuery) > -1){
-            product.style.display = 'flex';
-        }else{
-            product.style.display = 'none';
+            console.log("match found");
+            const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
+            const itemID =  product.getAttribute('data-itemID');
+    
+            //store details in object
+            let productDetails = {
+                productName,
+                productPrice,
+                itemID
+            };        
+    
+            //push oject to array
+            state.filteredProducts.push(productDetails);
         }
-        
-    });    
+    });
+
+    // clear UI
+    productListing.innerHTML = '';
+
+    // render filtere items
+    state.filteredProducts.forEach(renderProductToUI);
+
 }
 
 // List items based on link
