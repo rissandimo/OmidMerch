@@ -10,17 +10,16 @@ searchProduct.addEventListener('input', searchFilter);
 subMenu.addEventListener('click', showSpecificProducts);
 
 const state = {
-    currentCategory: null
+    currentCategory: null,
+    filteredProducts: []
 }
-
-let filteredProducts = [];
 
 
 
 //EVENT HANDLERS
 function priceFilter(event){
 
-    filteredProducts = [];
+    state.filteredProducts = [];
 
     let categoryProducts = null;
 
@@ -33,32 +32,32 @@ function priceFilter(event){
     // check if category set
     if(state.currentCategory === null){
         
-        parseDetailsAndStoreInArray(allProducts, filteredProducts);
+        parseDetailsAndStoreInArray(allProducts, state.filteredProducts);
 
     }else{
         
         constAllProductsArray = Array.from(allProducts);
         categoryProducts = constAllProductsArray.filter(product => product.getAttribute('data-category') === state.currentCategory);
 
-        parseDetailsAndStoreInArray(categoryProducts, filteredProducts);
+        parseDetailsAndStoreInArray(categoryProducts, state.filteredProducts);
     }
 
     //sort rugs based on filter
     if(priceFilterName === 'default'){
         console.log('default');
         
-        filteredProducts.sort(function(productA, productB){
+        state.filteredProducts.sort(function(productA, productB){
             return productA.itemID - productB.itemID;
         })
     }
     else if(priceFilterName === 'expensive'){
         console.log('expensive');
-        filteredProducts.sort(function(productA, productB){
+        state.filteredProducts.sort(function(productA, productB){
             return productB.productPrice - productA.productPrice;
         })
     }
     else if(priceFilterName === 'cheap'){
-        filteredProducts.sort(function(productA, productB){
+        state.filteredProducts.sort(function(productA, productB){
             return productA.productPrice - productB.productPrice;
         })
     }    
@@ -67,7 +66,7 @@ function priceFilter(event){
     productListing.innerHTML = '';
 
     //render each element to UI
-    filteredProducts.forEach(renderProductToUI);
+    state.filteredProducts.forEach(renderProductToUI);
     
 }
 
