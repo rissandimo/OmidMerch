@@ -20,6 +20,8 @@ let filteredProducts = [];
 //EVENT HANDLERS
 function priceFilter(event){
 
+    filteredProducts = [];
+
     let categoryProducts = null;
 
     //creat array to store filtered products
