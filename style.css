@@ -1,5 +1,6 @@
 :root{
-    --background-color: #5271FF ;
+    --background-color: #ffffff;
+    --max-width: 1280px;
     --product-color: #e6e6fa;
     --btn-background: #002dcc;
 }
@@ -125,8 +126,13 @@ p{
 
                                             /* Navigation */
 
+.navigation{
+    border-bottom: 2px solid #E5E5E5;
+    padding-bottom: 1rem;
+}
+                                            
 .navigation > ul{
-    background-color: #5e5d5d;
+    background-color: #fff;
     color: #d8d8d8;
     font-family: sans-serif;
     font-size: 1.7rem;
@@ -135,7 +141,7 @@ p{
 
 /* Group item */
 .navigation > ul > li{
-    color: #fff;
+    color: #717171;
     display: inline-block;
     list-style-type: none;
     padding: 0.5rem 2.5rem;
@@ -144,12 +150,12 @@ p{
 
 .navigation > ul > li a,
 .navigation > ul > li a:visited{
-    color: #fff;
+    color: #717171;
     text-decoration: none;
 }
 
 ul.sub-menu{
-    background-color: #383838;
+    background-color: #fff;
     list-style-type: none;
     margin-left: -2.5rem;
     opacity: 0;
@@ -161,12 +167,15 @@ ul.sub-menu{
 
 /* Group item hover - background color*/
 .navigation > ul > li:hover{
-    background-color: #383838;
+    background-color: #fff;
+    color: #333;
+    font-weight: bold;
 }
 
 /* Hover over group item - display*/
 .navigation li:hover .sub-menu{
     opacity: 1;
+    width: 20rem;
 }
 
 /* Sub group item */
@@ -176,9 +185,12 @@ ul.sub-menu li{
     padding-top: 0.5rem;
 }
 
+/* Sub item hover */
 ul.sub-menu li:hover{
-    background-color: #656565;
-    color: #fff;
+    background-color: #fff;
+    color: #333;
+    text-decoration: underline;
+
 }
 
 
@@ -199,8 +211,8 @@ ul.sub-menu li:hover{
 
 .product-listing .product{
     align-items: center;
-    background-color: var(--product-color);
     border-radius: 10px;
+    color: #333;
     display: flex;
     flex-direction: column;
     justify-content: center;
