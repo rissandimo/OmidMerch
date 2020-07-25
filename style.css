@@ -137,6 +137,7 @@ p{
     font-family: sans-serif;
     font-size: 1.7rem;
     padding: 1rem;
+    text-align: center;
 }  
 
 /* Group item */
@@ -314,6 +315,7 @@ ul.sub-menu li:hover{
     }
 }
 
+/* Tablet */
 @media(max-width: 750px){
     .product-listing{
         grid-template-columns: repeat(2, 1fr);
