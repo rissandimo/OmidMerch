@@ -7,11 +7,16 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body>    
+    <!-- Logo -->
+    <div class="container">
+        <div class="logo">
+            <img src="logo-sm.png" alt="">
+        </div>
+    </div>
 
     <header id="header">
         <div class="container">
-            <h1>Omid's Merchandise</h1>
             <nav class="navigation">
                 <ul>
                     <li><a href="index.html">Products</a>
@@ -32,32 +37,34 @@
         </div>
     </header>
 
-    <div id="filter-message-container">
-        <p class="alert-message">No items found under that query</p>
-    </div>
-    
-                                                                <!-- Filter -->
-    <section id="filters">
-        <div class="container">
-            <div class="search-filter">
-                <div class="name-filter">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="search-product" placeholder="Search by name and description">
-                    <button type="submit" id="show-all-products">Show All Products</button>
-                    <button type="submit" id="search-btn">Search</button>
-        
-                </div>
-                <div class="filter-products">
-                    <select id="price-filter">Filter
-                        <option>Sort Filter</option></option>
-                        <option value="default">Sort by price: Default</option>
-                        <option value="expensive">Sort by price: High to low</option>
-                        <option value="cheap">Sort by price: Low to high</option>
-                    </select>
+
+        <!-- Filter -->
+        <section id="filters">
+            <div class="container">
+                <div class="search-filter">
+                    <div class="name-filter">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-product" placeholder="Search by name and description">
+                        <button type="submit" id="show-all-products">Show All Products</button>
+                        <button type="submit" id="search-btn">Search</button>
+            
+                    </div>
+                    <div class="filter-products">
+                        <select id="price-filter">Filter
+                            <option>Sort Filter</option></option>
+                            <option value="default">Sort by price: Default</option>
+                            <option value="expensive">Sort by price: High to low</option>
+                            <option value="cheap">Sort by price: Low to high</option>
+                        </select>
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <div id="filter-message-container">
+            <p class="alert-message">No items found under that query</p>
         </div>
-    </section>
+
 
                                                             <!-- Products -->
     <section id="products">
