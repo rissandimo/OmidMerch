@@ -79,17 +79,19 @@
                     </div>
                     <a href="#" class="btn btn-primary btn-block">Buy</a>
                 </div>
+            </div> -->
                 <div class="product" data-itemID="27" data-category="bracelets">
                     <img src="products/27.JPG">
                     <div class="product-description">
                         <p class="product-name">Vintage tennis bracelet</p>
                         <p class="product-price">$20.00</p>
                     </div>
-                    <a href="#" class="btn btn-primary btn-block">Buy</a>
-                </div> -->
-
-                
-            </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="BEVT33UTSR2RY">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                        </form>    
+                </div>
         </div>
     </section>   
     <script src="app.js"></script>                                                         
