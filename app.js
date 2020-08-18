@@ -55,7 +55,18 @@ function filterByPrice(event){
 
     parseDetailsAndStoreInArray(allProductsList, state.filteredProducts);
 
-    //sort rugs based on filter
+    // Sort product array based on filter name
+    sortProductArray(priceFilterName);
+
+    //clear UI
+    productListing.innerHTML = '';
+
+    //render each element to UI
+    state.filteredProducts.forEach(renderProductToUI);
+    
+}
+
+function sortProductArray(priceFilterName){
     if(priceFilterName === 'default'){
         
         state.filteredProducts.sort(function(productA, productB){
@@ -72,13 +83,6 @@ function filterByPrice(event){
             return productA.productPrice - productB.productPrice;
         })
     }    
-
-    //clear UI
-    productListing.innerHTML = '';
-
-    //render each element to UI
-    state.filteredProducts.forEach(renderProductToUI);
-    
 }
 
 function parseDetailsAndStoreInArray(products, array){
