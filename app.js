@@ -36,24 +36,9 @@ function storeAllProducts(){
     // clear all products
     state.allProducts = [];
     
-    const allProducts = document.querySelectorAll('.product');
+    const allProductsList = document.querySelectorAll('.product');
 
-    allProducts.forEach(product => {
-
-        const productName = product.querySelector('.product-name').innerText;
-        const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
-        const itemID =  product.getAttribute('data-itemID');
-
-         //store details in object
-         let productDetails = {
-            productName,
-            productPrice,
-            itemID
-        };        
-
-        //push oject to array
-        state.allProducts.push(productDetails);
-    });
+    parseDetailsAndStoreInArray(allProductsList, state.allProducts);
 }
 
 
