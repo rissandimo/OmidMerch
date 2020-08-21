@@ -1,6 +1,6 @@
 :root{
     --alert-color: red;
-    --background-color: #ffffff;
+    --background-color: #fff;
     --max-width: 1280px;
     --product-color: #e6e6fa;
     --btn-background: #002dcc;
@@ -69,19 +69,6 @@ form{
     display: none;
 }
 
-.product:hover + .local-message{
-    align-items: center;
-    background-color: var(--alert-color);
-    display: flex;
-    flex-direction: column;
-    font-size: 1.8rem;
-    justify-content: center;
-    position: absolute;
-    left: 62rem;
-    height: 8rem;
-    width: 35rem;
-}
-
 .logo img{
     margin: 1.5rem auto;
     display: block;
@@ -108,7 +95,7 @@ p{
         border-radius: 1rem;
         display: flex;
         justify-content: space-between;
-        margin: 15rem auto 3rem auto;
+        margin: 7rem auto 3rem auto;
         padding: 1.5rem;
         width: 100%;
     }
@@ -157,7 +144,7 @@ p{
 
 .navigation{
     border-bottom: 2px solid #E5E5E5;
-    padding-bottom: 2rem;
+    padding-bottom: 0.5rem;
 }
                                             
 .navigation > ul{
@@ -240,18 +227,44 @@ ul.sub-menu li:hover{
 }
 
 .product-listing .product{
-    background-color: #F7F7F7;
     align-items: center;
+    background-color: #F7F7F7;
     border-radius: 10px;
     color: #333;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     height:30rem;
+    justify-content: center;
+    padding: 3rem 0 1rem 0;
     text-align: center;
 }
 
+.product:hover + .local-message{
+    align-items: center;
+    background-color: var(--alert-color);
+    display: flex;
+    flex-direction: column;
+    font-size: 1.8rem;
+    justify-content: center;
+    position: absolute;
+    left: 62rem;
+    height: 8rem;
+    width: 35rem;
+}
+
 .product{ position: relative; }
+
+.product-category{
+    align-items: center;
+    border-bottom: 2px solid #E5E5E5;
+    display: flex;
+    font-size: 2rem;
+    font-weight: bold;
+    height: 100px;
+    word-spacing: 0.5rem;
+    text-transform: uppercase;
+    justify-content: center;
+}
 
 .product .product-description{
     margin: 1rem 0;
