@@ -1,4 +1,5 @@
 :root{
+    --alert-color: red;
     --background-color: #ffffff;
     --max-width: 1280px;
     --product-color: #e6e6fa;
@@ -62,6 +63,23 @@ body{
 
 form{
     margin: 1rem 0;
+}
+
+.local-message{
+    display: none;
+}
+
+.product:hover + .local-message{
+    align-items: center;
+    background-color: var(--alert-color);
+    display: flex;
+    flex-direction: column;
+    font-size: 1.8rem;
+    justify-content: center;
+    position: absolute;
+    left: 62rem;
+    height: 8rem;
+    width: 35rem;
 }
 
 .logo img{
@@ -232,6 +250,8 @@ ul.sub-menu li:hover{
     height:30rem;
     text-align: center;
 }
+
+.product{ position: relative; }
 
 .product .product-description{
     margin: 1rem 0;
