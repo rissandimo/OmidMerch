@@ -91,12 +91,14 @@ function parseDetailsAndStoreInArray(products, array){
         const productName = product.querySelector('.product-name').innerText;
         const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
         const itemID =  product.getAttribute('data-itemID');
+        const paypalID = product.getAttribute('data-paypalID');
 
         //store details in object
         let productDetails = {
             productName,
             productPrice,
-            itemID
+            itemID,
+            paypalID
         };        
 
         //push oject to array
@@ -105,12 +107,14 @@ function parseDetailsAndStoreInArray(products, array){
 }
 
 function renderProductToUI(product){
-    console.log("render product");
+
     // create product dom element
     const productElement = document.createElement('div');
     productElement.className = 'product';
     productElement.id = product.itemID;
     productElement.setAttribute('data-itemID', product.itemID);
+    productElement.setAttribute('data-paypalID', product.paypalID);
+    productElement.paypalID = product.paypalID;
 
     productElement.innerHTML = `
         <img src="products/${product.itemID}.JPG" alt="">
@@ -118,7 +122,12 @@ function renderProductToUI(product){
             <p class="product-name">${product.productName}</p>
             <p class="product-price">$${product.productPrice}</p>
         </div>
-        <a href="#" class="btn btn-primary btn-block">Buy</a>
+
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="${productElement.paypalID}">
+            <button type="submit" class="btn btn-primary btn-block">Buy</button>
+        </form>
     `;
 
     productListing.appendChild(productElement);
@@ -139,8 +148,6 @@ function searchFilter(event){
         
         state.filteredProducts = [];
     
-        // clear input
-
         const allProducts = document.querySelectorAll('.product');
                 
         allProducts.forEach(product => 
@@ -155,12 +162,14 @@ function searchFilter(event){
 
                 const productPrice = product.querySelector('.product-price').innerText.replace('$', '');
                 const itemID =  product.getAttribute('data-itemID');
+                const paypalID = product.getAttribute('data-paypalID');
         
                 //store details in object
                 let productDetails = {
                     productName,
                     productPrice,
-                    itemID
+                    itemID,
+                    paypalID
                 };        
         
                 //push oject to array
@@ -177,7 +186,7 @@ function searchFilter(event){
         showAllProductsBtn.style.display = 'inline-block';
         document.querySelector('.name-filter').style.width = '55rem';
     
-        // render filtere items
+        // render filtered items
         state.filteredProducts.forEach(renderProductToUI);
         }
 
@@ -189,7 +198,7 @@ function searchFilter(event){
     }
     // Empty query
     else{
-            displayAlertMessage("You must enter a query");
+        displayAlertMessage("You must enter a query");
     }
 }
 
