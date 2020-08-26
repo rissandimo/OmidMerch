@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omid's Merchandise - Conact</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+   <!-- Logo -->
+   <div class="container">
+    <div class="logo">
+        <img src="logo-sm.png" alt="">
+    </div>
+</div>
+
+<header id="header">
+    <div class="container">
+        <nav class="navigation">
+            <ul>
+                <li><a href="index.html">Products</a>
+                    <ul class="sub-menu">
+                        <li><a href="index.html">All</a></li>
+                        <li><a href="bracelets.html">Bracelets</a></li>
+                        <li><a href="earrings.html">Earrings</a></li>
+                        <li><a href="necklaces.html">Necklaces</a></li>
+                        <li><a href="other.html">Other</a></li>
+                        <li><a href="local.html">Local Pickups</a></li>
+                    </ul>
+                    <span class="arrow">&#9660;</span>
+                </li>
+                <li><a href="returns.html">Returns</a></li>
+                <li> <a href="about-us.html">About Us</a> </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+    <!-- Filter -->
+    <section id="filters">
+        <div class="container">
+            <div class="search-filter">
+                <div class="name-filter">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-product" placeholder="Search by name and description">
+                    <button type="submit" id="show-all-products">Show All Products</button>
+                    <button type="submit" id="search-btn">Search</button>
+        
+                </div>
+                <div class="filter-products">
+                    <select id="price-filter">Filter
+                        <option>Sort Filter</option></option>
+                        <option value="default">Sort by price: Default</option>
+                        <option value="expensive">Sort by price: High to low</option>
+                        <option value="cheap">Sort by price: Low to high</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="filter-message-container">
+        <p class="alert-message">No items found under that query</p>
+    </div>
+
+    <section id="success">
+        <div class="container">
+            You're order has been successfull. 
+        </div>
+    </section>
+</body>
+</html>
