@@ -1,20 +1,537 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-    <style>
-        body{
-            text-align: center;
-        }
-
-        h1{
-            margin-top: 20rem;
-        }
-    </style>
+    <title>Omid's Merchance - Home</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>The website is being updated. Please check back again later</h1>
+<body>    
+    <!-- Logo -->
+    <div class="container">
+        <div class="logo">
+            <img src="logo-sm.png" alt="">
+        </div>
+    </div>
+
+    <header id="header">
+        <div class="container">
+            <nav class="navigation">
+                <ul>
+                    <li><a href="index.html">Products</a>
+                        <ul class="sub-menu">
+                            <li><a href="index.html">All</a></li>
+                            <li><a href="bracelets.html">Bracelets</a></li>
+                            <li><a href="earrings.html">Earrings</a></li>
+                            <li><a href="necklaces.html">Necklaces</a></li>
+                            <li><a href="other.html">Other</a></li>
+                            <li><a href="local.html">Local Pickups</a></li>
+                        </ul>
+                        <span class="arrow">&#9660;</span>
+                    </li>
+                    <li><a href="returns.html">Returns</a></li>
+                    <li> <a href="about-us.html">About Us</a> </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Product Category -->
+    <div class="container">
+        <div class="product-category">
+                All Products
+        </div>
+    </div>
+        
+        <!-- Filter -->
+        <section id="filters">
+            <div class="container">
+                <div class="search-filter">
+                    <div class="name-filter">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-product" placeholder="Search by name and description">
+                        <button type="submit" id="show-all-products">Show All Products</button>
+                        <button type="submit" id="search-btn">Search</button>
+            
+                    </div>
+                    <div class="filter-products">
+                        <select id="price-filter">Filter
+                            <option>Sort Filter</option></option>
+                            <option value="default">Sort by price: Default</option>
+                            <option value="expensive">Sort by price: High to low</option>
+                            <option value="cheap">Sort by price: Low to high</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="filter-message-container">
+            <p class="alert-message">No items found under that query</p>
+        </div>
+
+
+                                                            <!-- Products -->
+    <section id="products">
+        <div class="container">
+            <div class="product-listing">
+               
+                <div class="product" data-itemID="555" data-category="test" data-paypalID="269CHKMK9TA5N">
+                    <img src="products/555.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Test</p>
+                        <p class="product-price">$0.50</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="BVTUK3R9E5XKQ">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                        
+                        
+                </div> 
+                <div class="product" data-itemID="1" data-category="plates" data-paypalID="QJYSME9D5MAPU">
+                    <img src="products/1.JPG">
+                    <div class="product-description">
+                        <p class="product-name">China plates</p>
+                        <p class="product-price">$100.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="QJYSME9D5MAPU">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                </div> 
+
+                <div class="product" data-itemID="2" data-category="glasses" data-paypalID="SFQ4PKWJ29658">
+                    <img src="products/2.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Burberry Glasses</p>
+                        <p class="product-price">$175.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="SFQ4PKWJ29658">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                </div>
+              
+                <div class="product" data-itemID="3" data-category="shoes" data-paypalID="QZ7QYEZYCQ5G2">
+                    <img src="products/3.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Fergamo Shoes: Size 6 1/2</p>
+                        <p class="product-price">$50.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="QZ7QYEZYCQ5G2">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                </div>
+                <div class="product" data-itemID="4" data-category="necklaces" data-paypalID="AX9HRAF24E422">
+                    <img src="products/4.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Pearl Necklace</p>
+                        <p class="product-price">$15.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="AX9HRAF24E422">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                </div>
+
+                <div class="product" data-itemID="5" data-category="necklaces" data-paypalID="5UEYLHSJKSLD4">
+                    <img src="products/5.JPG">
+                    <div class="product-description">
+                        <p class="product-name">White pearl necklace</p>
+                        <p class="product-price">$15.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="5UEYLHSJKSLD4">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                </div>
+                <div class="product" data-itemID="6" data-category="necklaces" data-paypalID="K9U5Q2B74VLDW">
+                    <img src="products/6.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Necklace</p>
+                        <p class="product-price">$15.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="K9U5Q2B74VLDW">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                </div>
+              <div class="product" data-itemID="7" data-category="necklaces" data-paypalID="7NQUKCH9LXGJU">
+                    <img src="products/7.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Necklace</p>
+                        <p class="product-price">$15.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7NQUKCH9LXGJU">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                </div>
+
+               <div class="product" data-itemID="8" data-category="necklaces" data-paypalID="8KHVCYXQ2ZR7Q">
+                    <img src="products/8.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Necklace</p>
+                        <p class="product-price">$15.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="8KHVCYXQ2ZR7Q">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                </div>
+                
+                 <div class="product" data-itemID="9" data-category="necklaces" data-paypalID="LB3WEQTX3AUTU">
+                    <img src="products/9.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Necklace</p>
+                        <p class="product-price">$15.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="LB3WEQTX3AUTU">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                        </form>
+                 </div>
+
+                  <div class="product" data-itemID="10" data-category="necklaces" data-paypalID="9S9RA7C9NVBCY">
+                    <img src="products/10.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Necklace</p>
+                        <p class="product-price">$20.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="9S9RA7C9NVBCY">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                        </form>
+                </div>
+
+                 <div class="product" data-itemID="11" data-category="necklaces" data-paypalID="U4C98TQUYLCRS">
+                    <img src="products/11.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Bracelet</p>
+                        <p class="product-price">$15.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="U4C98TQUYLCRS">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                        </form>
+                </div>
+
+                <div class="product" data-itemID="12" data-category="necklaces" data-paypalID="Q5H9SGMCF9X6Q">
+                    <img src="products/12.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Necklace</p>
+                        <p class="product-price">$15.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="Q5H9SGMCF9X6Q">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                        </form>
+                </div>
+
+               <div class="product" data-itemID="13" data-category="necklaces" data-paypalID="43SYGCQ2FN7DW">
+                    <img src="products/13.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Necklace</p>
+                        <p class="product-price">$15.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="43SYGCQ2FN7DW">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                        </form>
+                </div>
+
+                <div class="product" data-itemID="14" data-category="necklaces" data-paypalID="WHPQ62D5C99RN">
+                    <img src="products/14.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Necklace</p>
+                        <p class="product-price">$25.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="WHPQ62D5C99RN">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                </div>
+
+                <div class="product" data-itemID="15" data-category="earrings" data-paypalID="RXFMSCB3FELSQ">
+                    <img src="products/15.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Pendant Set</p>
+                        <p class="product-price">$35.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="RXFMSCB3FELSQ">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                </div>
+
+            <div class="product" data-itemID="16" data-category="earrings" data-paypalID="V9ALS66FW3BGS">
+                    <img src="products/16.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Necklace Pendant</p>
+                        <p class="product-price">$25.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="V9ALS66FW3BGS">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                </div>
+
+                  <div class="product" data-itemID="17" data-category="earrings" data-paypalID="DKYEN2F2NPHQS">
+                    <img src="products/17.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Necklace Pendant</p>
+                        <p class="product-price">$15.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="DKYEN2F2NPHQS">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                        </form>
+                </div>
+                  <div class="product" data-itemID="18" data-category="earrings" data-paypalID="5F6DRD5E2T274">
+                    <img src="products/18.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Earrings</p>
+                        <p class="product-price">$25.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="5F6DRD5E2T274">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                </div>
+               <div class="product" data-itemID="19" data-category="earrings" data-paypalID="CW4S6V2SYR44J">
+                    <img src="products/19.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Earrings</p>
+                        <p class="product-price">$15.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="CW4S6V2SYR44J">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                </div>
+                  <div class="product" data-itemID="20" data-category="earrings" data-paypalID="DXPWRYDWM6XGU">
+                    <img src="products/20.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Necklace Pendant</p>
+                        <p class="product-price">$20.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="DXPWRYDWM6XGU">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                </div>
+                 <div class="product" data-itemID="21" data-category="earrings" data-paypalID="6X9KPX6H2XFVJ">
+                    <img src="products/21.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Earrings</p>
+                        <p class="product-price">$25.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="6X9KPX6H2XFVJ">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                </div>
+              <div class="product" data-itemID="22" data-category="earrings" data-paypalID="RNTQ5X6VJDV9J">
+                    <img src="products/22.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Bracelet</p>
+                        <p class="product-price">$20.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="RNTQ5X6VJDV9J">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                        </form>
+                     </div>
+              <div class="product" data-itemID="23" data-category="earrings" data-paypalID="7M37U8DKUXSAQ">
+                    <img src="products/23.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Necklace Pendant</p>
+                        <p class="product-price">$20.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="7M37U8DKUXSAQ">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                </div>
+                      <div class="product" data-itemID="24" data-category="earrings" data-paypalID="9677LGF8AW47A">
+                    <img src="products/24.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Earrings</p>
+                        <p class="product-price">$15.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="9677LGF8AW47A">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                        </form>
+                </div>
+           
+                <div class="product" data-itemID="25" data-category="rings" data-paypalID="WLX6QEZZAR8VC">
+                    <img src="products/25.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Vintage 14 k gold ring</p>
+                        <p class="product-price">$150.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="WLX6QEZZAR8VC">
+                        <a href="#" class="btn btn-primary btn-block">Buy</a>
+                        </form>
+                </div>
+
+                <div class="product" data-itemID="26" data-category="bracelets" data-paypalID="5ZWP8S5K7UGYN">
+                    <img src="products/26.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Vintage sterling silver bracelet</p>
+                        <p class="product-price">$65.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="5ZWP8S5K7UGYN">
+                        <a href="#" class="btn btn-primary btn-block">Buy</a>
+                        </form>
+                </div>
+
+                 <div class="product" data-itemID="27" data-category="bracelets" data-paypalID="BEVT33UTSR2RY">
+                    <img src="products/27.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Vintage tennis bracelet</p>
+                        <p class="product-price">$20.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="BEVT33UTSR2RY">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                        </form>    
+                </div>
+              
+                  <div class="product" data-itemID="28" data-category="bracelets" data-paypalID="WH9LNNUZN5PP4">
+                    <img src="products/28.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Necklace</p>
+                        <p class="product-price">$15.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="WH9LNNUZN5PP4">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                        </form>
+                    </div>
+                  <div class="product" data-itemID="29" data-category="bracelets" data-paypalID="R4YZ5WMSBVBGJ">
+                    <img src="products/29.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Necklace</p>
+                        <p class="product-price">$20.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="R4YZ5WMSBVBGJ">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                        </form>
+                </div>
+              <div class="product" data-itemID="30" data-category="earrings" data-paypalID="BK23RHPG4ZQAA">
+                    <img src="products/30.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Turqquiose earrings</p>
+                        <p class="product-price">$20.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="BK23RHPG4ZQAA">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                        </form>
+                </div>
+                <div class="product" data-itemID="31" data-category="bracelets" data-paypalID="YKQ24CZWMDXMC">
+                    <img src="products/31.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Necklace</p>
+                        <p class="product-price">$20.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="YKQ24CZWMDXMC">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                    </form>
+                </div>
+                <div class="product" data-itemID="32" data-category="necklace" data-paypalID="D4VVYKN6P62FQ">
+                    <img src="products/32.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Necklace pendant</p>
+                        <p class="product-price">$15.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="D4VVYKN6P62FQ">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                        </form>
+                </div>
+                 <div class="product" data-itemID="33" data-category="necklace" data-paypalID="36U4R8NXEX7HS">
+                    <img src="products/33.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Sterling silver necklace pendant</p>
+                        <p class="product-price">$25.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="36U4R8NXEX7HS">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                        </form>
+                </div>
+                <div class="product" data-itemID="34" data-category="bracelets" data-paypalID="P5L6J6X5QWCBA">
+                    <img src="products/34.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Sterling silver necklace pendant</p>
+                        <p class="product-price">$25.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="P5L6J6X5QWCBA">
+                        <button type="submit" class="btn btn-primary btn-block">Buy</button>
+                        </form>
+                </div>
+                <div class="product" data-itemID="35" data-category="earrings" data-paypalID="4DFEH7BH9WBUC">
+                    <img src="products/35.JPG">
+                    <div class="product-description">
+                        <p class="product-name">Beaded pearl earrings</p>
+                        <p class="product-price">$30.00</p>
+                    </div>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="4DFEH7BH9WBUC">
+                        <button class="btn btn-primary btn-block" type="submit">Buy</button>
+                    </form> 
+                </div>
+                
+            </div>
+        </div>
+    </section>   
+    <script src="app.js"></script>                                                         
 </body>
 </html>

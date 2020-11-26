@@ -118,7 +118,7 @@ p{
         padding: 0.5rem 1rem;
     }
     .search-filter #search-btn{
-        padding: 0.5rem 1rem;
+        display: none;
     }
 
     .search-filter select{
@@ -350,6 +350,14 @@ ul.sub-menu li:hover{
         }
     }
 }
+
+@media (max-width: 1200px) {
+    .search-filter #search-btn{
+        display: visible;
+        padding: 0.5rem 1rem;
+    }
+}
+
 
 
     /* Regular */
